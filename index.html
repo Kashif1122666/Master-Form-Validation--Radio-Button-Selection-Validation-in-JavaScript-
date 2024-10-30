@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>chapter 84: Form validation: radio-button</h1>
+               <!--    Group  1: r1 -->
+               <form onsubmit = "return validateRadios('r1');">
+                <input type="radio" name="r1" value="cat">Cat<br>
+                <input type="radio" name="r1" value="bat">Bat<br>
+                <input type="radio" name="r1" value="hat">Hat<br>
+                <input type="submit" value="Submit Form">
+             </form> 
+          
+                  <!--    Group  2: r2 -->
+             <form onsubmit = "return validateRadios('r2');">
+                <input type="radio" name="r2" value="apple">Apple<br>
+                <input type="radio" name="r2" value="banana">Banana<br>
+                <input type="radio" name="r2" value="cherry">Cherry<br>
+                <input type="submit" value="Submit Form">
+             </form>
+    <script src="./script.js"></script>
+</body>
+</html>

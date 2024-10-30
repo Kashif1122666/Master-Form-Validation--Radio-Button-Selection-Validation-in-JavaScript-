@@ -1,0 +1,75 @@
+chapter 84: Form validation: radio-button
+
+Radion button allow users to select one option from a predefined set. In this chapter,
+we'll cover how to validate radio button groups in forms using JavaScript, ensuring that 
+the user selects one of the options before submitting the form.
+
+1. Basic HTML structure for Radio Button
+
+   Let's start with a simple form containing three radio button-cat, bat, and Hat.
+   one can be selected at a time due to the shared name attribute, which groups them
+   together.
+
+   <form onsubmit = "return validateRadios('r1');">
+      <input type="radio" name="r1" value="cat">Cat<br>
+      <input type="radio" name="r1" value="bat">Bat<br>
+      <input type="radio" name="r1" value="hat">Hat<br>
+      <input type="submit" value="Submit Form">
+   </form>   
+
+   Line 1: The onsubmit attribute calls the validateRadios('r1') function, passing the 
+   name of the radion button group (r1) as an argument.
+
+   Line 2-4: The <input> elements represent the radio buttons , and each has same name
+   attribute (r1), ensuring they function as a group.
+
+2. JavaScript validation function   
+    
+    The validation function checks whether any radio button in the group has been selected.
+    if none are selected, an alert is shown and form submission is prevented.
+
+    function validateRadios(groupName) {
+        var radio = document.getElementByName(groupName);
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[i].checked){
+                return true;// At least one option is selected
+            }
+        }
+        alert("Please check one.");
+            return false; // Prevents form submission
+    }
+
+    Line 2: The document.getElementByName(groupName) method returns a collection of all
+    radio button with the specified name attribute (r1), and this collection is stored in 
+    the radios variable.
+
+    Line 3-6: Loops through the radios collection to check if any button is selected (i.e,
+    checked is true). If one is found , the function returns true, allowing form submission.
+
+    Line 7:If no button is selected ,  an alert messsage prompts the user to select an option.
+
+    Line 8: Return false , which prevents form submission if no button is selected.
+
+3. Reusability with Dynamic Radio Button Groups     
+
+    The validation function is reusable for mutiple radio button groups. you only need to 
+    pass the name of the radio button group you want to validate.
+           
+             <!--    Group  1: r1 -->
+    <form onsubmit = "return validateRadios('r1');">
+      <input type="radio" name="r1" value="cat">Cat<br>
+      <input type="radio" name="r1" value="bat">Bat<br>
+      <input type="radio" name="r1" value="hat">Hat<br>
+      <input type="submit" value="Submit Form">
+   </form> 
+
+        <!--    Group  2: r2 -->
+   <form onsubmit = "return validateRadios('r2');">
+      <input type="radio" name="r2" value="apple">Apple<br>
+      <input type="radio" name="r2" value="banana">Banana<br>
+      <input type="radio" name="r2" value="cherry">Cherry<br>
+      <input type="submit" value="Submit Form">
+   </form>
+
+   You can now reuse the validateRadios() function for any radio button group by simply
+   passing the appropriate name attribute (e.g., r1 or r2) in the onsubmit event.
